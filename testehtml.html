@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercícios Outubro</title>
+    <style>
+        /* Criar espaço entre o botão e o resultado */
+        #resultado {
+            margin-top: 20px; /* 20px de espaço vertical acima do resultado */
+        }
+    </style>
+</head>
+<br>
+    <h1>Execução Interativa em JavaScript</h1>
+    
+    <button onclick="executarCalculo()">Selecionar Função</button>
+
+    <script src="CalcAumentoSalario.js"></script>
+    <script src="CalcSalarioReceber.js"></script>
+    <script src="CalcAreaTriangulo.js"></script>
+    <script src="CalcAreaCirculo.js"></script>
+    <script src="CalcExerc5.js"></script>
+    <script src="CalcConversorMedidas.js"></script>
+    <script src="CalcIdade.js"></script>
+    <script src="CalcTabuada.js"></script>
+    <div id="resultado">Nenhuma Função Selecionada</div>
+
+    <script>
+        function executarCalculo() {
+            var escolha = prompt("Escolha uma função de 1 a 8:\n1. Aumento de Salário\n2. Salário a Receber\n3. Área de um Triângulo\n4. Área de um Círculo\n5. Cálculo Exercício 5\n6. Conversor de Medidas\n7. Idade Atrapalhada\n8. Tabuada 8");
+            if (escolha === null) { }
+            else{
+                escolha = parseInt(escolha);
+
+
+                if (!isNaN(escolha) && escolha >= 1 && escolha <= 8) {
+                    var resultado;
+                    switch (escolha) {
+                        case 1:
+                            var entrada1 = prompt("Entre com o salario")
+                            if(entrada1 === null){
+                                resultado = "<h4>Operação cancelada</h4>";
+                                break;
+                            }
+                            else{
+                                resultados = CalcAumentoSalario(parseFloat(entrada1));
+                                resultado = "<h4>Resultado do Aumento de Salário:</h4><br>";
+                                resultado += "Salário Anterior: R$" + resultados.salarioAnterior + "<br>";
+                                resultado += "Aumento: R$" + resultados.aumento + "<br>" ;
+                                resultado += "Novo Salário: R$" + resultados.novoSalario + "<br>";
+                                break;
+                            }
+                        case 2:
+                            var entrada2 = prompt("Entre com o salário base")
+                            if(entrada2 === null){
+                                resultado = "<h4>Operação cancelada</h4>";
+                                break;
+                            }
+                            else{
+                                resultados2 = CalcSalarioReceber(parseFloat(entrada2));
+                                resultado = "<h4>Resultado do Salário a Receber:</h4><br>";
+                                resultado += "Salário Base: R$" + resultados2.salariobase + "<br>";
+                                resultado += "Gratificação: R$" + resultados2.gratificacao + "<br>";
+                                resultado += "Imposto Renda: R$" + resultados2.imposto + "<br>" ;
+                                resultado += "Salário a Receber: R$" + resultados2.salarioreceber + "<br>";
+                                break;
+                            }
+                        case 3:
+                            var entrada3A = prompt("Entre com a Base do Triângulo")
+                            var entrada3B = prompt("Entre com a Altura do Triângulo")
+                            if(entrada3A === null || entrada3B === null){
+                                resultado = "<h4>Operação cancelada</h4>";
+                                break;
+                            }
+                            else{
+                                resultados3 = CalcAreaTriangulo(parseFloat(entrada3A),  parseFloat(entrada3B));
+                                resultado = "<h4>Área do Triângulo: " + resultados3 + "</h4><br>";
+                                break;
+                            }
+                        case 4:
+                            var entrada4 = prompt("Entre com o Raio do Círculo")
+                            if(entrada4 === null){
+                                resultado = "<h4>Operação cancelada</h4>";
+                                break;
+                            }
+                            else{
+                                resultados4 = CalcAreaCirculo(parseFloat(entrada4));
+                                resultado = "<h4>Área do Círculo: " + resultados4 + "</h4><br>";
+                                break;
+                            }
+                        case 5:
+                            var entrada5 = prompt("Entre com um número positivo e maior que 0")
+                            if(entrada5 === null){
+                                resultado = "<h4>Operação cancelada</h4>";
+                                break;
+                            }else if(entrada5 <=0){
+                                resultado = "<h4>Favor digitar um número maior que 0!</h4>"
+                                break;
+                            }
+                            else{
+                                resultados5 = CalcExercicio5(parseFloat(entrada5));
+                                resultado = "<h4>Cálculos Exercício 5:</h4><br>";
+                                resultado += "Número para calcular: " + entrada5 + "<br>";
+                                resultado += entrada5 + " ao quadrado: " + resultados5.quadrado + "<br>";
+                                resultado += entrada5 + " ao cubo: " + resultados5.cubo + "<br>";
+                                resultado += "Raiz Quadrada de " + entrada5 + ": " + resultados5.raizquad + "<br>";
+                                resultado += "Raiz Cúbica de " + entrada5 + ": " + resultados5.raizcubo + "<br>";
+                                break;
+                            }
+                        case 6:
+                            var entrada6 = prompt("Entre com uma medida em pés")
+                            if(entrada6 === null){
+                                resultado = "<h4>Operação cancelada</h4>";
+                                break;
+                            }
+                            else{
+                                resultados6 = CalcConversorMedidas(parseFloat(entrada6));
+                                resultado = "<h4>Conversão de Medidas</h4><br>";
+                                resultado += "Medida para converter: " + entrada6 + " pés<br>";
+                                resultado += "Polegadas: " + resultados6.polegadas + "<br>";
+                                resultado += "Jardas: " + resultados6.jardas + "<br>";
+                                resultado += "Milhas: " + resultados6.milhas + "<br>";
+
+                                break;
+                            }
+                        case 7:
+                            var entrada7A = prompt("Entre com o ano de nascimento")
+                            var entrada7B = prompt("Entre com o ano atual")
+                            if(entrada7A === null || entrada7B === null){
+                                resultado = "<h4>Operação cancelada</h4>";
+                                break;
+                            }
+                            else if(isNaN(entrada7A) || isNaN(entrada7B) || parseInt(entrada7B) <= parseInt(entrada7A)) {
+                                resultado = "<h4>Favor digitar dados válidos!</h4>";
+                                break;
+                            }
+                            else{
+                                resultados7 = CalcIdade(parseInt(entrada7A),  parseInt(entrada7B));
+                                resultado = "<h4>Cálculo de Idade</h4><br>";
+                                resultado += "Ano de Nascimento: " + entrada7A + "; Ano Atual: " + entrada7B + "<br>";
+                                resultado += "Idade Atual: " + resultados7.idade + "<br>";
+                                resultado += "Idade em 2050: " + resultados7.idade2050 + "<br>";
+                                break;
+                            }
+                        case 8:
+                            var entrada8 = prompt("Entre com um número")
+                            if(entrada8 === null){
+                                resultado = "<h4>Operação cancelada</h4>";
+                                break;
+                            }
+                            else{
+                                resultados8 = CalcTabuada(parseFloat(entrada8));
+                                resultado = "<h4>Cálculo Tabuada:</h4><br>";
+                                resultado += resultados8.split('\n').join('<br>'); //ajuda do chat GPT esse comando para substituir as quebras de linha ^^
+                                break;
+                            }
+
+
+                        default:
+                            resultado = "Função não implementada ainda.";
+                            break;
+                    }
+                    document.getElementById("resultado").innerHTML = resultado; //innerHTML recebe o resultado como formatado na função switch acima.
+                } else {
+                    document.getElementById("resultado").innerHTML = "<h4>Escolha inválida. Por favor, escolha um número de 1 a 8!<h4>";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
